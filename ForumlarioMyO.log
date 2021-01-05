@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.12) (preloaded format=pdflatex 2021.1.2)  5 JAN 2021 21:55
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.12) (preloaded format=pdflatex 2021.1.2)  5 JAN 2021 22:09
 entering extended mode
 **./ForumlarioMyO.tex
 (ForumlarioMyO.tex
@@ -604,7 +604,7 @@ MyO.toc)
 Here is how much of TeX's memory you used:
  16732 strings out of 479662
  348791 string characters out of 2873790
- 639855 words of memory out of 3000000
+ 639870 words of memory out of 3000000
  33562 multiletter control sequences out of 15000+200000
  419461 words of font info for 68 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -627,9 +627,9 @@ nts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type
 s/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr1
 2.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C
 :/Program Files/MiKTeX 2.9/fonts/type1/public/rsfs/rsfs10.pfb>
-Output written on ForumlarioMyO.pdf (8 pages, 196172 bytes).
+Output written on ForumlarioMyO.pdf (8 pages, 195442 bytes).
 PDF statistics:
- 366 PDF objects out of 1000 (max. 8388607)
+ 364 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 
