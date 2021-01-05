@@ -1,0 +1,290 @@
+%===============================================
+%				Ismael Charpentier
+%	
+%				Formulario MyO:
+%	 Temas: Méc. Analitica y Sólido Rígido
+%
+%===============================================
+
+% Tipo de documento y tamaño letra
+\documentclass[14pt]{extarticle}
+
+
+%===========================================================
+%	
+%			PACKAGES EMPLEADOS
+%
+	% ENTRADA Y SALIDA DE DATOS (carácteres)
+	%======================================
+	\usepackage[T1]{fontenc}
+	\usepackage[utf8]{inputenc}
+	%======================================
+
+
+	% FORMATO DEL TEXTO
+	%======================================
+	\usepackage{indentfirst}
+	\usepackage{enumerate}
+	%======================================
+
+
+	\usepackage{amsmath}
+	\usepackage{mathrsfs}
+	\usepackage{amssymb}
+	\usepackage{xcolor}
+
+	% FORMATO PAGINA
+	%=======================================================
+	\usepackage[a4paper]{geometry}
+	\geometry{left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm}
+	%=======================================================
+%
+%	
+%===========================================================
+
+% Formato texto
+\setlength{\parindent}{4em}
+\setlength{\parskip}{2em}
+
+
+%===========================================================
+%
+%					DEFINICION DE MACROS 
+% 
+% Simbolo Lagrangiana
+\newcommand{\Lagr}{\mathscr{L}}
+\newcommand{\ddt}{\frac{d}{dt}}
+%
+%
+% 		DEFINICION: Color boxes
+% Syntax: \colorboxed[<color model>]{<color specification>}{<math formula>}
+\newcommand*{\colorboxed}{}
+	\def\colorboxed#1#{%
+  		\colorboxedAux{#1}%
+	}	
+\newcommand*{\colorboxedAux}[3]{%
+  % #1: optional argument for color model
+  % #2: color specification
+  % #3: formula
+  	\begingroup
+    	\colorlet{cb@saved}{.}%
+    	\color#1{#2}%
+    	\boxed{%
+      		\color{cb@saved}%
+      		#3%
+   	 	}%
+  \endgroup
+}
+%
+%
+%===========================================================
+
+
+\title{
+	\Huge{Formulario Mecánica y Ondas} \\
+	\medskip
+	\large Sólido Rígido y Mecánica Analítica}
+
+\author{Ismael Charpentier Martín}
+
+
+\begin{document}
+
+\maketitle
+\clearpage
+
+\tableofcontents
+\clearpage
+
+\part{Sólido Rígido}
+
+	Un sólido rígido es un cuerpo cuya distancia entre las partículas que lo forman es invariable
+
+	\section{Momento de inercia:}
+
+		\begin{itemize}
+
+			\item{
+			Distribución discreta de masa:
+			\begin{equation}
+				I_{ij} = \sum_\alpha m_\alpha \left( \delta_{ij} \sum_k x^2_{\alpha k} - x_{\alpha i}\hspace*{1mm} x_{\alpha j} \right)
+			\end{equation}
+			}
+
+			\item{
+			Para una distribución continua de masa:
+			\begin{equation}
+				I_{ij} = \int_V \rho \left( \delta_{ij} \sum_k x^2_{k} - x_{i}\hspace*{1mm} x_{j} \right)
+			\end{equation}
+			}
+
+			\item{
+			En forma matricial:
+			\begin{equation}
+				\tilde{I} = 
+				\begin{pmatrix}
+					I_{11} & I_{12} & \cdots & I_{1n}\\
+					I_{21} & I_{22} & \cdots & I_{2n}\\
+					\vdots & \vdots & \ddots & \vdots \\
+					I_{m1} & I_{m2} & \cdots & I_{mn}\\
+				\end{pmatrix}
+			\end{equation}
+			}
+		\end{itemize}
+
+		\subsection{Teorema de Steiner:}
+
+			Momento de inercia respecto de un origen distinto al centro de masas (CM), respetando el paralelismo de los ejes:
+			\begin{equation}
+				I_{ij}\biggr|_o = I_{ij}\biggr| _{cm} + M\left(\delta_{ij}a^2 - a_i \hspace*{1mm} a_j \right)
+			\end{equation}
+
+	\section{Energía cinética:}
+
+		Cálculo general de la energía cinética para un sólido rígido:
+		\begin{equation}[i]
+		 	T = \underbrace{\frac{1}{2} \sum_\alpha m_\alpha v^2_0}_{\text{T. Traslación}} + \underbrace{\frac{1}{2} \sum_\alpha m_\alpha \left( \omega \times r_\alpha \right)^2}_{\text{T. Rotación}} + \underbrace{\frac{1}{2} \sum_\alpha r_\alpha \cdot \left( v_0 \times \omega \right)}_\text{{U.T}}
+		\end{equation}
+
+		Este último término es igual a cero cuando ($U.T = 0$):
+		\begin{enumerate}[(i)]
+			\item{
+				$v_0 = 0$: Rotación pura que pasa por O. 
+				\begin{equation}
+					T = \frac{1}{2} \sum_\alpha m_\alpha \left( \omega \times r_\alpha \right)^2
+				\end{equation}
+			}
+			\item{
+				$v_0 \hspace{1mm} || \hspace{1mm} \omega$: Eje de rotación y deslizamientto que pasa por O.
+				\begin{equation}
+					T = \frac{1}{2} \sum_\alpha m_\alpha v^2_0 + \frac{1}{2} \sum_\alpha m_\alpha \left( \omega \times r_\alpha \right)^2
+				\end{equation}
+			}
+			\item{
+				$O \equiv CM$: El origen de coordenada coincide con el centro de masas.
+				\begin{equation}
+					T = \frac{1}{2} \sum_\alpha m_\alpha v^2_{cm} + \frac{1}{2} \sum_\alpha m_\alpha \left( \omega_{cm} \times r_\alpha \right)^2
+				\end{equation}
+			}
+		\end{enumerate}
+
+
+
+\clearpage
+\part{Mecánica Analítica:}
+	
+	\section{Formulación Lagrangiana:}
+		\begin{itemize}
+		\item{ \textbf{Coordenadas generalizadas:} 
+			Se toman tantas como sean necesarias para describir \textit{totalmente} el sistema, es decir, tantas como grados de libertad (g.l)
+			\begin{equation}
+				q_i \hspace{2cm} i=1,2, \cdots, g.l
+			\end{equation}
+		}
+		\item{ \textbf{Ligaduras:} 
+			Fuerza o restricción del movimiento.
+				\begin{itemize}
+					\item{ Holónomas: Función de la posición de las partículas $(r)$ (puede depender o no explícitamente del tiempo)
+						\begin{equation}
+							f(r_1, r_2, \cdots, t) = 0
+						\end{equation}
+					}
+					\item{ No holónomas: Además pueden depender de las velocidades: 
+						\begin{equation}
+							f(r_1, r_2, ..., \frac{dr_1}{dt}, \frac{dr_2}{dt}, ..., t) = 0
+						\end{equation}
+					}
+				\end{itemize}
+		}
+		\item{ \textbf{Lagrangiana:}
+			\begin{equation}
+				\colorboxed[rgb]{1, 0, 0}{\Lagr = T - V}
+			\end{equation}
+
+			\begin{equation*}
+				\begin{split}
+					&T \equiv \text{energía cinética del sistema}\\
+					&V \equiv \text{potencial del campo}\\
+				\end{split}
+			\end{equation*}
+		}
+		\item{ \textbf{Principio de D'Alambert:} 
+			\begin{equation}
+				\underbrace{\sum_i \left( F^{a}_i - \dot{p}_i \right) \cdot \delta r_i}_{\substack{\text{Trabajo de las fuerzas apli-} \\ \text{cadas más una fuerza inversa}}} + \underbrace{\sum_i \cdot f_i \delta r_i}_{\text{Trabajo fuerzas de ligadura}}
+			\end{equation}
+
+			Cuando las fuerzas de ligadura no realizan trabajo (casos vistos en clase)
+			\begin{equation}
+				\sum_i \left( F^{a}_i - \dot{p}_i \right) \cdot \delta r_i = 0
+			\end{equation}
+		}
+		\item{ \textbf{Ecuaciones de transformación a coord. generalizadas:}
+
+			\begin{itemize}
+				\item Posición:			 
+					\begin{equation}
+							r_i \equiv r_i(q_1, q_2, ..., q_n, t)
+					\end{equation}
+				\item Desplazamiento virtual: 
+					\begin{equation}
+							\delta r_i = \sum_j \frac{\partial r_i}{\partial q_j} \cdot \delta q_j
+					\end{equation}
+
+				\item Velocidad: 
+					\begin{equation}
+							v_i \equiv \sum_k \frac{\partial r_i}{\partial q_k} \cdot \dot{q}_k + \frac{\partial r_i}{\partial t}
+					\end{equation}
+				\item Fuerza generalizada:
+					\begin{equation}
+						\colorboxed{red}{Q_j = \sum_i F_i \frac{\partial r_i}{\partial q_j}}
+					\end{equation}
+
+			\end{itemize}
+			}
+
+		\item{ \textbf{Ecuaciones de Lagrange}
+
+			Condición: Ligaduras holónomas, $f(r_1, r_2, ..., t) = 0$, entonces:
+			\begin{equation}
+				\ddt \left( \frac{\partial T}{\partial \dot{q}_j}\right) - \frac{\partial T}{\partial q_j} = Q_j
+			\end{equation}
+
+			Condiciones: Ligaduras holónomas Y Fuerzas derivan de un potencial escalar y no depende de la velocidad, $V \neq V(\dot{q}_j)$, entonces:
+			\begin{equation}
+				\colorboxed{red}{\ddt \left( \frac{\partial \Lagr}{\partial \dot{q}_j}\right) - \frac{\partial \Lagr}{\partial q_j} = 0}
+			\end{equation}
+
+			tambien:
+			\begin{equation}
+				Q_j = -\frac{\partial V}{\partial q_j}
+			\end{equation}
+
+		}
+		\end{itemize}
+
+
+	\section{Formulación Hamiltoniana:}
+
+		\begin{itemize}
+			\item{ \textbf{Momento generalizado canónico: }
+			\begin{equation}
+				P_j = \frac{\partial \Lagr}{\partial \dot{q}_j}
+			\end{equation}
+			}
+
+			\item{ \textbf{Coordenadas cíclicas: }
+			Las coordenadas cíclicas no aparecen explicitamente en el Lagrangiano del sistema
+			\begin{equation}
+				\Lagr \neq \Lagr(q_c) \Longrightarrow \frac{\partial \Lagr}{\partial q_c} = 0
+			\end{equation}
+			Por lo tanto:
+			\begin{equation}
+				\ddt \frac{\partial \Lagr}{\partial \dot{q}_c} = 0 \Rightarrow \ddt P_c = 0 \Longleftrightarrow P_c \equiv cte
+			\end{equation}
+
+			}
+		\end{itemize}
+
+
+
+\end{document}
