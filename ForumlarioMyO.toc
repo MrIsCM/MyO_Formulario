@@ -4,4 +4,4 @@
 \contentsline {section}{\numberline {2}Energía cinética:}{4}{}%
 \contentsline {part}{II\hspace {1em}Mecánica Analítica:}{5}{}%
 \contentsline {section}{\numberline {3}Formulación Lagrangiana:}{5}{}%
-\contentsline {section}{\numberline {4}Formulación Hamiltoniana:}{6}{}%
+\contentsline {section}{\numberline {4}Formulación Hamiltoniana:}{7}{}%

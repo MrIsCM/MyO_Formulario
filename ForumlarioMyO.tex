@@ -27,11 +27,13 @@
 	\usepackage{enumerate}
 	%======================================
 
-
+	%	MATEMATICAS Y FORMULAS
+	\usepackage[skins,theorems]{tcolorbox}
 	\usepackage{amsmath}
 	\usepackage{mathrsfs}
 	\usepackage{amssymb}
 	\usepackage{xcolor}
+
 
 	% FORMATO PAGINA
 	%=======================================================
@@ -75,7 +77,8 @@
    	 	}%
   \endgroup
 }
-%
+\tcbset{highlight math style={enhanced,
+  colframe=red,colback=white,arc=0pt,boxrule=1pt}}
 %
 %===========================================================
 
@@ -198,7 +201,7 @@
 		}
 		\item{ \textbf{Lagrangiana:}
 			\begin{equation}
-				\colorboxed[rgb]{1, 0, 0}{\Lagr = T - V}
+				\tcbhighmath[boxrule=1.5pt]{\Lagr = T - V}
 			\end{equation}
 
 			\begin{equation*}
@@ -236,7 +239,7 @@
 					\end{equation}
 				\item Fuerza generalizada:
 					\begin{equation}
-						\colorboxed{red}{Q_j = \sum_i F_i \frac{\partial r_i}{\partial q_j}}
+						\tcbhighmath[boxrule=1.5pt]{Q_j = \sum_i F_i \frac{\partial r_i}{\partial q_j}}
 					\end{equation}
 
 			\end{itemize}
@@ -251,7 +254,7 @@
 
 			Condiciones: Ligaduras holónomas Y Fuerzas derivan de un potencial escalar y no depende de la velocidad, $V \neq V(\dot{q}_j)$, entonces:
 			\begin{equation}
-				\colorboxed{red}{\ddt \left( \frac{\partial \Lagr}{\partial \dot{q}_j}\right) - \frac{\partial \Lagr}{\partial q_j} = 0}
+				\tcbhighmath[boxrule=1.5pt]{\ddt \left( \frac{\partial \Lagr}{\partial \dot{q}_j}\right) - \frac{\partial \Lagr}{\partial q_j} = 0}
 			\end{equation}
 
 			tambien:
@@ -262,13 +265,13 @@
 		}
 		\end{itemize}
 
-
+	\clearpage
 	\section{Formulación Hamiltoniana:}
 
 		\begin{itemize}
 			\item{ \textbf{Momento generalizado canónico: }
 			\begin{equation}
-				P_j = \frac{\partial \Lagr}{\partial \dot{q}_j}
+				\tcbhighmath[boxrule=1.5pt]{P_j = \frac{\partial \Lagr}{\partial \dot{q}_j}}
 			\end{equation}
 			}
 
@@ -281,10 +284,99 @@
 			\begin{equation}
 				\ddt \frac{\partial \Lagr}{\partial \dot{q}_c} = 0 \Rightarrow \ddt P_c = 0 \Longleftrightarrow P_c \equiv cte
 			\end{equation}
+			}
+			\item{ \textbf{Conservación del momento lineal: }
+
+			Si la coordenada $q_j$ es una coordenada de traslación, es decir, $dq_j$ supone un desplazamiento del sistema en la dirección $\hat{n}$ y además es coordenada cíclica:
+			\begin{equation}
+				P_j \equiv p_{\hat{n}} = cte
+			\end{equation}
+			}
+
+			\item{ \textbf{Conservación del momento angular: }
+			
+			Si la coordenada $q_j$ es una coordenada de rotación, es decir, $dq_j$ supone una rotación del sistema respecto a un eje $\hat{n}$ y, además, es coordenada cíclica:
+			\begin{equation}
+				P_j \equiv L_{\hat{n}} = cte
+			\end{equation}
+			}
+
+			\item{ \textbf{Conservación de la energía total: }
+
+			Condiciones:
+				\begin{itemize}
+				\item $V \neq V(\dot{q})$, Las fuerzas derivan de un potencial independiente de las velocidades
+
+				\item Ligaduras independientes del tiempo. $f \neq f(t)$
+				\end{itemize}
+
+			Definimos el Hamiltoniano del sistema:
+
+			\begin{equation}
+				\tcbhighmath[boxrule=1.5pt]{H =  \sum_j \dot{q}_j P_j - \Lagr}
+			\end{equation}
 
 			}
+
+			\item{ \textbf{Teorema: } \label{Teorema.Hamilton}
+
+			Sistema dinámico de s grados de libertad, configuración determinada por las coord. generalizadas $q_j$. Si
+			\begin{equation}
+				\frac{\partial \Lagr}{\partial t} = 0 \Longrightarrow H = cte
+			\end{equation}
+
+			$H = T + V$, si:
+			\begin{itemize}
+			\item V no es función explicita de $\dot{q}_j$ ni de $t$:
+				\begin{equation}
+					\frac{\partial V}{\partial \dot{q}_j} = 0 \hspace{5mm} y \hspace{5mm} \frac{\partial V}{\partial t} = 0
+				\end{equation}
+
+			\item Las ecs. de transformación $\vec{r}_i = \vec{r}_i(q_j)$ no interviene t:
+				\begin{equation}
+					\frac{\partial \vec{r}_i}{\partial t} = 0
+					\label{Ecs.Trans.Indep.Tiempo}
+				\end{equation}
+
+			\item T es función cuadrática homogénea de las velocidades:
+				\begin{equation}
+					T(k \dot{q}_j) = k^2 T(\dot{q}_j)
+					\label{T.Func.Cuad.Hmg}
+				\end{equation}
+			\end{itemize}
+
+			Condiciones \ref{T.Func.Cuad.Hmg} y \ref{Ecs.Trans.Indep.Tiempo} son equivalentes.
+			}
+
+			\item{ \textbf{Ecuaciones de Hamilton: }
+
+			Queremos pasar de $\Lagr \equiv \Lagr(q_j, \dot{q}_j, t)$ a otra función $H \equiv H(q_j, P_j, t)$
+
+			%\begin{equation}
+			%	\colorboxed{red}{\dot{q}_j = \frac{\partial H}{\partial P_j}; \hspace{5mm} \dot{P}_j = - \frac{\partial H}{\partial q_j}; \hspace{5mm} \frac{\partial H}{\partial t} = -\frac{\partial \Lagr}{\partial t}}
+			%	\label{Ecs.Hamilton}
+			%\end{equation}
+
+			\begin{equation}
+				\tcbhighmath[boxrule=1.5pt]{\dot{q}_j = \frac{\partial H}{\partial P_j}; \hspace{5mm} \dot{P}_j = - \frac{\partial H}{\partial q_j}; \hspace{5mm} \frac{\partial H}{\partial t} = -\frac{\partial \Lagr}{\partial t}}
+				\label{Ecs.Hamilton}
+			\end{equation}
+			}
+
+			\item{ \textbf{Resolución práctica: }
+
+			\begin{itemize}
+				\item Obtención de $\Lagr$
+
+				\item Cálculo de $P_j = \partial \Lagr / \partial q_j$
+
+				\item Obtención de $H =  \sum_j \dot{q}_j P_j - \Lagr$ o bien aplicando el teorema
+
+				\item Cálculo de las ecuaciones de Hamilton (\ref{Ecs.Hamilton})
+			\end{itemize}
+
+			}
+
 		\end{itemize}
-
-
 
 \end{document}
